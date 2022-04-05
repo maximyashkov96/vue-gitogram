@@ -1,0 +1,7 @@
+export { default as home } from './homeIcon.vue'
+export { default as photo } from './photoIcon.vue'
+export { default as signOut } from './signOutIcon.vue'
+export { default as triangle } from './triangleIcon.vue'
+export { default as gitogram } from './gitogramIcon.vue'
+export { default as star } from './starIcon.vue'
+export { default as fork } from './forkIcon.vue'

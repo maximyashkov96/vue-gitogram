@@ -1,0 +1,69 @@
+.wrapper__inner {
+    background: #FAFAFA;
+    border-bottom: 1px solid #C6C6C8;
+}
+
+.stories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-top: 44px;
+}
+
+.repository-name {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 28px;
+    color: #292929;
+}
+.repository-desc {
+    margin-top: 15px;
+    margin-bottom: 38px;
+    font-size: 14px;
+    span {
+        color: #404040;
+        font-weight: 700;
+    }
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    svg {
+        fill: #000;
+    }
+}
+
+.c-button:not(:last-child) {
+    margin-right: 28px;
+}
+
+.logo-icon {
+    svg {
+        width: 174px;
+        height: 35.51px;
+    }
+}
+
+.photo-icon {
+    width: 37px;
+    height: 37px;
+}
+
+.signOut-icon {
+    width: 25px;
+    height: 20.5px;
+}
