@@ -63,18 +63,6 @@ export default {
             items: []
         }
     },
-    setup () {
-        const convertDate = (date) => {
-            const timestamp = Date.parse(date)
-            const options = { day: 'numeric', month: 'long', year: 'numeric' }
-
-            return Intl.DateTimeFormat('en-GB', options).format(timestamp)
-        }
-
-        return {
-            convertDate
-        }
-    },
     methods: {
         getFeedData (item) {
             return {
@@ -84,6 +72,12 @@ export default {
                 stars: item.stargazers_count,
                 forks: item.forks
             }
+        },
+        convertDate (date) {
+            const timestamp = Date.parse(date)
+            const options = { day: 'numeric', month: 'long' }
+
+            return Intl.DateTimeFormat('en-GB', options).format(timestamp)
         }
     },
     async created () {

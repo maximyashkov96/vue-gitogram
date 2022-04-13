@@ -42,4 +42,29 @@ export default {
 
 </script>
 
-<style lang="scss" src="./post.scss" scoped></style>
+<style lang="scss" scoped>
+.inner__wrapper {
+    width: 979px;
+    margin: 0 auto;
+}
+.post-item {
+    background: #FFFFFF;
+    border: 1px solid #F1F1F1;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    padding: 24px 0;
+    width: 979px;
+    padding: 24px 0px 24px 24px;
+}
+.c-container {
+    width: 979px;
+    margin: 0 auto;
+}
+.post-date {
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 10px;
+}
+</style>
