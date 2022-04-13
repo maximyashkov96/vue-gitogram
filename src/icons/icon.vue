@@ -5,7 +5,7 @@
 <script>
 import * as icons from './variants'
 export default {
-    name: 'iconsItem',
+    name: 'Icon',
     components: { ...icons },
     props: {
         name: {

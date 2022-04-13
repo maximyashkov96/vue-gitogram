@@ -1,5 +1,5 @@
 <template>
-    <button :class="['c-button btn', 'green-theme', {'hover-text': withHoverText}]" :data-hover-text="hoverText">
+    <button :class="['c-button', `green-theme`, {'hover-text': withHoverText}]" :data-hover-text="hoverText">
     <span class="btn-text">
         <slot></slot>
     </span>
