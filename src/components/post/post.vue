@@ -3,7 +3,7 @@
         <div class="c-container">
             <div class="inner__wrapper">
                 <user
-                    :avatar="avatar"
+                    :src="src"
                     :username="username"
                 />
                 <div class="post-item">
@@ -29,7 +29,7 @@ export default {
             required: true,
             type: String
         },
-        avatar: {
+        src: {
             required: true,
             type: String
         },

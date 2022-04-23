@@ -1,6 +1,6 @@
 <template>
     <div class="c-user-profile">
-        <img :src="avatar" alt="userAvatar" class="img"/>
+        <img :src="src" alt="userAvatar" class="img"/>
         <span class="username">{{username}}</span>
     </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
     name: 'user',
     props: {
-        avatar: {
+        src: {
             type: String,
             required: true
         },

@@ -1,4 +1,4 @@
-import { makeRequests } from '../requests'
+import { makeRequest } from '../requests'
 import { addStartingZero } from '@/utils/utils'
 
 export const getTrendings = (lang = 'javascript') => {
@@ -17,7 +17,7 @@ export const getTrendings = (lang = 'javascript') => {
     params.append('per_page', 10)
     params.append('q', `language:${lang} created:>${formattedDate}`)
 
-    return makeRequests({
+    return makeRequest({
         url: `/search/repositories?${params}`
     })
 }
