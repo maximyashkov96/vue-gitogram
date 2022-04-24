@@ -1,9 +1,9 @@
 <template>
-  <div :class="['c-story-post-item', {active: active}]">
+  <div :class="['c-story-post-item', { active }]">
     <div class="stories__container">
       <div class="header">
-        <div class="progress">
-          <x-progress :active="active"  @onFinish="$emit('onProgressFinish')" />
+        <div class="progress" v-if="active">
+          <x-progress :isActive="isActive"  @onFinish="$emit('onProgressFinish')" />
         </div>
         <div class="user">
           <user :username="username" :src="userAvatar"/>
@@ -44,12 +44,13 @@ import { xProgress } from '@/components/xProgress'
 import { xButton } from '@/components/xButton'
 import { placeholder } from '@/components/placeholder'
 import { icon } from '@/icons'
+import { spinner } from '@/components/spinner'
 
 export default {
     name: 'storyPostItem',
     emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
     props: {
-        active: {
+        isActive: {
             type: Boolean,
             default: false
         },
@@ -72,6 +73,10 @@ export default {
         },
         content: {
             type: String
+        },
+        active: {
+            type: Boolean,
+            default: false
         }
     },
     components: {
@@ -79,7 +84,8 @@ export default {
         xProgress,
         xButton,
         placeholder,
-        icon
+        icon,
+        spinner
     }
 }
 </script>

@@ -12,6 +12,13 @@ export default {
             active: false
         }
     },
+    props: {
+        isActive: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
+    },
     emits: ['onFinish'],
     methods: {
         emitOnFinish () {
@@ -20,7 +27,7 @@ export default {
     },
     mounted () {
         setTimeout(() => {
-            this.active = true
+            this.active = this.isActive
         }, 1000)
         this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
     },

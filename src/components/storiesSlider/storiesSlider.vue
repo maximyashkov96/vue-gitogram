@@ -9,6 +9,7 @@
               :content="readme"
               :loading="slideNdx === ndx && loading"
               :active="slideNdx === ndx"
+              :isActive="slideNdx === ndx"
               :btnsShown="activeBtns"
               @onNextSlide="handleSlide(ndx + 1)"
               @onPrevSlide="handleSlide(ndx - 1)"
@@ -39,8 +40,8 @@ export default {
         return {
             slideNdx: 0,
             sliderPosition: 0,
-            loading: false,
-            btnsShown: true
+            btnsShown: true,
+            loading: false
         }
     },
     computed: {
@@ -65,22 +66,22 @@ export default {
         },
         moveSlider (slideNdx) {
             const { slider, item } = this.$refs
-            console.log(this.$refs)
             const slideWidth = parseInt(getComputedStyle(item[slideNdx]).getPropertyValue('width'), 10)
             this.slideNdx = slideNdx
+            console.log(slideNdx)
             this.sliderPosition = -(slideWidth * slideNdx)
             slider.style.transform = `translateX(${this.sliderPosition}px)`
         },
         async loadReadme () {
-            this.loading = true
             this.btnsShown = false
+            this.loading = true
             try {
                 await this.fetchReadmeForActiveSlide()
             } catch (e) {
                 console.log(e)
             } finally {
-                this.btnsShown = true
                 this.loading = false
+                this.btnsShown = true
             }
         },
         async handleSlide (slideNdx) {

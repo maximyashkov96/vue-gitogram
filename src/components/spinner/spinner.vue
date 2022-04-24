@@ -17,6 +17,18 @@ export default {
   display: inline-block;
   width: 44px;
   height: 44px;
-  animation: rotate 1.7s linear infinite;
+  animation-name: rotation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotation {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
 }
 </style>
