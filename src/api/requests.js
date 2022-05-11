@@ -8,5 +8,8 @@ export const makeRequest = ({
     url,
     method,
     data,
-    headers
+    headers: {
+        Authorization: `token ${localStorage.getItem('token')}`,
+        ...headers
+    }
 })

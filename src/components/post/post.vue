@@ -9,8 +9,27 @@
                 <div class="post-item">
                     <slot name="repository-info"/>
                 </div>
+                <div class="toggler">
+                  <toggler @onToggle="toggle"></toggler>
+                </div>
+                <div class="issues-loader" v-if="loading">
+                  <issues-preloader></issues-preloader>
+                </div>
+                <div class="comments mt-12" v-if="shown">
+                  <ul v-if="issues.length" class="comments__list">
+                    <li
+                      class="comments__item"
+                      v-for="issue in issues" :key="issue.id"
+                    >
+                      <comment
+                        :text="issue.title"
+                        :username="issue.user.login"
+                      ></comment>
+                    </li>
+                  </ul>
+                  <div v-else class="no-comments">No comments</div>
+                </div>
             </div>
-            <issues/>
             <div class="post-date">{{ date }}</div>
         </div>
     </div>
@@ -19,11 +38,19 @@
 <script>
 
 import { user } from '@/components/user'
-import { issues } from '@/components/issues'
+import { issuesPreloader } from '@/components/issuesPreloader'
+import { toggler } from '@/components/toggler'
+import { comment } from '@/components/comment'
 
 export default {
     name: 'post',
-    components: { user, issues },
+    components: { user, issuesPreloader, comment, toggler },
+    data () {
+        return {
+            shown: false
+        }
+    },
+    emits: ['loadContent'],
     props: {
         username: {
             required: true,
@@ -36,6 +63,21 @@ export default {
         date: {
             type: String,
             required: true
+        },
+        issues: {
+            type: Array,
+            default: () => []
+        },
+        loading: {
+            type: Boolean
+        }
+    },
+    methods: {
+        toggle (isOpened) {
+            this.shown = isOpened
+            if (isOpened && this.issues.length === 0) {
+                this.$emit('loadContent')
+            }
         }
     }
 }
@@ -66,5 +108,8 @@ export default {
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.4);
   margin-top: 10px;
+}
+.comments__list {
+  padding: 0;
 }
 </style>

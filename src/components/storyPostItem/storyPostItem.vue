@@ -11,7 +11,7 @@
       </div>
       <div class="content">
         <div class="loader" v-if="loading">
-          <spinner />
+          <spinner/>
         </div>
         <div class="info" v-else>
           <div v-if="content?.length" class="content-text" v-html="content"></div>
@@ -19,7 +19,12 @@
         </div>
       </div>
       <div class="button">
-        <x-button>Follow</x-button>
+        <x-button
+        @click="$emit(following.status ? 'onUnfollow' : 'onFollow', id)"
+        :theme="following.status ? 'grey' : 'green'"
+        :loading="following.loading"
+        >
+        {{following.status ? 'Unfollow' : 'Follow'}}</x-button>
       </div>
     </div>
     <slot name="buttons" v-if="active">
@@ -48,7 +53,7 @@ import { spinner } from '@/components/spinner'
 
 export default {
     name: 'storyPostItem',
-    emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+    emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow', 'onUnfollow'],
     props: {
         isActive: {
             type: Boolean,
@@ -77,6 +82,9 @@ export default {
         active: {
             type: Boolean,
             default: false
+        },
+        following: {
+            type: Boolean
         }
     },
     components: {

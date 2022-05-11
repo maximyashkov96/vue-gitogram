@@ -2,7 +2,7 @@
   <div class="c-stories-slider">
     <div class="stories-container">
       <ul class="stories" ref="slider">
-        <li class="stories-item" v-for="({id, owner, readme}, ndx) in trendings" :key="id" ref="item">
+        <li class="stories-item" v-for="({id, owner, readme, following}, ndx) in trendings" :key="id" ref="item">
             <story-post-item
               :user-avatar="owner.avatar_url"
               :username="owner.login"
@@ -13,7 +13,9 @@
               :btnsShown="activeBtns"
               @onNextSlide="handleSlide(ndx + 1)"
               @onPrevSlide="handleSlide(ndx - 1)"
-              @onProgressFinish="handleSlide(ndx + 1)"
+              :following="following"
+
+              @onFollow="starRepo(id)"
             />
         </li>
       </ul>
@@ -58,7 +60,8 @@ export default {
     methods: {
         ...mapActions({
             fetchTrendings: 'trendings/fetchTrendings',
-            fetchReadme: 'trendings/fetchReadme'
+            fetchReadme: 'trendings/fetchReadme',
+            starRepo: 'trendings/starRepo'
         }),
         async fetchReadmeForActiveSlide () {
             const { id, owner, name } = this.trendings[this.slideNdx]

@@ -1,13 +1,19 @@
 <template>
-  <div class="c-spinner">
-    <icon name="spinner" />
+  <div :class="['c-spinner', `theme-${theme}`]">
+    <icon name="spinner"/>
   </div>
 </template>
 
 <script>
 import { icon } from '@/icons'
 export default {
-    components: { icon }
+    name: 'spinner',
+    components: { icon },
+    props: {
+        theme: {
+            type: String
+        }
+    }
 }
 </script>
 
@@ -21,14 +27,23 @@ export default {
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  &.theme-white{
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 @keyframes rotation {
     0% {
-        transform:rotate(0deg);
+      transform: rotate(0deg);
     }
     100% {
-        transform:rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 </style>

@@ -1,0 +1,47 @@
+.wrapper {
+    position: relative;
+}
+
+.auth {
+    position: relative;
+    margin-top: 6%;
+}
+
+.auth-btn {
+    position: relative;
+    margin-top: 38px;
+}
+
+.auth-logo {
+    text-align: center;
+}
+
+.auth-btn__text {
+    display: block;
+    text-align: left;
+    padding-left: 24px;
+}
+
+.auth-github {
+    position: absolute;
+    top: 9px;
+    right: 22px;
+}
+
+.auth-title {
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #6F6F6F;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.auth-img {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    margin-top: 86px;
+}

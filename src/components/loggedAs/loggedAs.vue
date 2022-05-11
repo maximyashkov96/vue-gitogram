@@ -1,29 +1,51 @@
 <template>
   <div class="c-logged-as">
-    <button class="icon">
+    <button class="icon" @click="$router.push({ name: 'feeds' })">
       <icon name="home"/>
     </button>
-    <div class="avatar">
-      <img :src="avatar" alt="user avatar" class="avatar__pic">
+    <div class="avatar" @click="$router.push({ name: 'profile' })">
+      <user :src="user.avatar_url" :username="user.login" alt="user avatar" class="avatar__pic"/>
     </div>
-    <button class="icon">
+    <button class="icon" @click="logOut">
       <icon name="exit"/>
     </button>
   </div>
 </template>
 
 <script>
+
+import { mapActions, mapState } from 'vuex' // не импортирован mapActions, mapGetters
+
 import { icon } from '@/icons'
+import { user } from '@/components/user'
 export default {
     name: 'loggedAs',
     components: {
-        icon
+        icon,
+        user
+    },
+    computed: {
+        ...mapState({
+            user: state => state.user.data
+        })
     },
     props: {
         avatar: {
             type: String,
             required: true
         }
+    },
+    methods: {
+        ...mapActions({
+            fetchUser: 'user/fetchUser'
+        }),
+        logOut () {
+            localStorage.removeItem('token')
+            window.location.reload()
+        }
+    },
+    created () {
+        this.fetchUser()
     }
 }
 </script>
